@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/ms-identity-service
+    url: jdbc:postgresql://localhost:5432/ms-customer-service
     username: postgres
     password: test
 
