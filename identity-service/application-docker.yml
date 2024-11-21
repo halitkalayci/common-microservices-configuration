@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/ms-identity-service
+    username: postgres
+    password: test
+
+eureka:
+  instance:
+    hostname: eureka-server
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://eureka-server:8888/eureka/
