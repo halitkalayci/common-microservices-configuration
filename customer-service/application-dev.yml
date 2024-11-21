@@ -13,5 +13,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/ms-customer-service
     username: postgres
     password: test
-server:
-  port: 8081
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
