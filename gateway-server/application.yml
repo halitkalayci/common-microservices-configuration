@@ -13,3 +13,5 @@ springdoc:
         url: /customer-service/v3/api-docs
       - name: order-service
         url: /order-service/v3/api-docs
+      - name: identity-service
+        url: /identity-service/v3/api-docs
