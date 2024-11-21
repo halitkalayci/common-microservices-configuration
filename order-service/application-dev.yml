@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    stream:
+      defaultBinder: rabbit # Kafka veya rabbit olarak değiştirebilirsiniz
+      function:
+        bindings:
+          processCustomerEvent-in-0: customer-topic # 'processCustomerEvent' fonksiyonunu 'customer-topic' ile bağla
+      bindings:
+        processCustomerEvent-in-0:
+          destination: customer-topic
+          content-type: application/json
+
+      kafka:
+        binder:
+          brokers: localhost:9092
+          consumerProperties:
+            group.id: order-service-group # Özelleştirilmiş bir grup kimliği
+            auto-offset-reset: latest # En son offsetten başlamak için
+
+      rabbit:
+        binder:
+          addresses: localhost:5672
+          username: guest
+          password: guest
