@@ -31,6 +31,20 @@ spring:
             filters:
               - RewritePath=/order-service/(?<segment>.*), /$\\{segment}
 
+          - id: identity-service-swagger
+            uri: http://identity-service:8083
+            predicates:
+              - Path=/identity-service/v3/api-docs
+            filters:
+              - SetPath=/v3/api-docs
+
+          - id: identity-service
+            uri: http://identity-service:8083
+            predicates:
+              - Path=/identity-service/**
+            filters:
+              - RewritePath=/identity-service/(?<segment>.*), /$\\{segment}
+
 eureka:
   instance:
     hostname: eureka-server
