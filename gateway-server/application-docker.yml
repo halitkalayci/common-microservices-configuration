@@ -45,6 +45,20 @@ spring:
             filters:
               - RewritePath=/identity-service/(?<segment>.*), /$\\{segment}
 
+          - id: notification-service-swagger
+            uri: http://notification-service:8085
+            predicates:
+              - Path=/notification-service/v3/api-docs
+            filters:
+              - SetPath=/v3/api-docs
+
+          - id: notification-service
+            uri: http://notification-service:8085
+            predicates:
+              - Path=/notification-service/**
+            filters:
+              - RewritePath=/notification-service/(?<segment>.*), /$\\{segment}
+
 eureka:
   instance:
     hostname: eureka-server
