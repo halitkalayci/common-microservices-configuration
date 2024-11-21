@@ -1,19 +1,9 @@
 spring:
   cloud:
     stream:
-      defaultBinder: rabbit
-      function:
-        bindings:
-          sendCustomerEvent-out-0: customer-topic
-      bindings:
-        sendCustomerEvent-out-0:
-          destination: customer-topic
-          content-type: application/json
-
       kafka:
         binder:
           brokers: kafka:9092
-
       rabbit:
         binder:
           addresses: rabbitmq:5672
@@ -23,12 +13,5 @@ spring:
     url: jdbc:postgresql://postgres:5432/ms-customer-service
     username: postgres
     password: test
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-jwt:
-  expiration: 600000
-  key: C53m0R5fXD2VXQwoWbV6Rhqk44l/fY0n6rk67028lFw9ZCU9nIpc0V6N1S7hNGHSj6nNGKszIHMUCGxOwatyQXtcA+HmkiCGtO19bhhVEEhfDVxdYP/PLDTnolseuAMP9bYYmXPUXZ/79iRq90kIsM37Uiw/Q3xFFjHObjzzD78ZP8ucmaavcEBTeW9dpOieMvyS7Zdz4ut/slMtIpq1gKBKBw+r3e3sUbUGmoINGJoBsPEQflbE10J1aTRLLREq1EmUNw9VZmVOtCrVErwKawkQFVniWieqAeQze+OY1BfkjYI11lhO7Y7LyOl3Vx35EezWhrYj8ceajsnEr7CIMg==
 server:
   port: 8081
