@@ -5,8 +5,12 @@ spring:
       function:
         bindings:
           sendCustomerEvent-out-0: customer-topic
+          customerCreatedEvent-out-0: customer-topic
       bindings:
         sendCustomerEvent-out-0:
+          destination: customer-topic
+          content-type: application/json
+        customerCreatedEvent-out-0:
           destination: customer-topic
           content-type: application/json
 
