@@ -22,3 +22,12 @@ spring:
           addresses: localhost:5672
           username: guest
           password: guest
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/

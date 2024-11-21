@@ -22,3 +22,12 @@ spring:
           addresses: rabbitmq:5672
           username: guest
           password: guest
+
+eureka:
+  instance:
+    hostname: eureka-server
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://eureka-server:8888/eureka/
