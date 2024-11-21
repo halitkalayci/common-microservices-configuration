@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: customer-service-swagger
+            uri: http://localhost:8081
+            predicates:
+              - Path=/customer-service/v3/api-docs
+            filters:
+              - SetPath=/v3/api-docs
+
+          - id: order-service-swagger
+            uri: http://localhost:8082
+            predicates:
+              - Path=/order-service/v3/api-docs
+            filters:
+              - SetPath=/v3/api-docs
+
+          - id: customer-service
+            uri: http://localhost:8081
+            predicates:
+              - Path=/customer-service/**
+            filters:
+              - RewritePath=/customer-service/(?<segment>.*), /$\\{segment}
+
+          - id: order-service
+            uri: http://localhost:8082
+            predicates:
+              - Path=/order-service/**
+            filters:
+              - RewritePath=/order-service/(?<segment>.*), /$\\{segment}
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
